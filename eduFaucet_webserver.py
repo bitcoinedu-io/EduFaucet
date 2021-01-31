@@ -56,7 +56,64 @@ def faucet_page():
     info = getLastTransactions(cur,10)
     return render_template('faucet-page.html', chaininfo=chaininfo, topinfo=topinfo,
                            info=info)
-   
+
+from flask import send_file
+
+@app.route("/1111/")
+def get_SPCS():
+   return send_file('SPCS.zip',
+                     mimetype='text',
+                     attachment_filename='SPCS.zip',
+                     as_attachment=True) 
+
+@app.route("/2222/")
+def get_2222():
+   return send_file('Desktop.zip',
+                     mimetype='text',
+                     attachment_filename='Desktop.zip',
+                     as_attachment=True) 
+
+@app.route("/3333/")
+def get_3333():
+   return send_file('IOGT.zip',
+                     mimetype='text',
+                     attachment_filename='IOGT.zip',
+                     as_attachment=True) 
+
+@app.route("/4444/")
+def get_4444():
+   return send_file('Downloads.zip',
+                     mimetype='text',
+                     attachment_filename='Downloads.zip',
+                     as_attachment=True) 
+
+@app.route("/5555/")
+def get_5555():
+   return send_file('Kamerauppladdningar.zip',
+                     mimetype='text',
+                     attachment_filename='Kamerauppladdningar.zip',
+                     as_attachment=True) 
+
+@app.route("/6666/")
+def get_6666():
+   return send_file('Nymapp.zip',
+                     mimetype='text',
+                     attachment_filename='Nymapp.zip',
+                     as_attachment=True) 
+
+@app.route("/7777/")
+def get_7777():
+   return send_file('Documents.zip',
+                     mimetype='text',
+                     attachment_filename='Documents.zip',
+                     as_attachment=True) 
+
+@app.route("/8888/")
+def get_8888():
+   return send_file('Pictures.zip',
+                     mimetype='text',
+                     attachment_filename='Pictures.zip',
+                     as_attachment=True) 
 
 @app.route("/payout/")
 def payout():
@@ -112,7 +169,7 @@ def payout():
     if lastTime+3600 > now:
       msg = 'A donation request was recently made from a computer with this ip-address.'
       nextTime = (lastTime+3600)*1000
-      err = 'Try again in <p id=\"time\"></p>.'
+      err = 'Try again in: '
       return render_template('payout-fail.html', chaininfo=chaininfo, topinfo=topinfo, nextTime=nextTime, info=info, msg=msg, err=err)
     elif lastTime > 0:
       res = cur.execute('DELETE FROM ipAddress WHERE address=?', (ipAddress,))

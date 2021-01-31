@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block pagecontent %}
+ <main role="main" class="container">
+
+      <div class="starter-template">
+        <h2>Bitcoin Edu Faucet</h2>
+	<table class="table">
+	  <tr><td>
+              Enter your Bitcoin Edu address in the textbox and press "Send".</br></br>
+              A payment of 4 BTE will be made to your address almost immediately.</br>
+              You can not make more then one request per hour.</td></tr>
+	  <tr><td>
+             <form id="payout" action="{{url_for('payout')}}">
+                  <input  class="form-control" type="text" name="payout" placeholder="Insert bitcoinEdu address...">
+                  <button type="submit" form="payout" class="btn btn-info" value="Send">Send</button>
+             </form>
+          </td></tr>
+	</table>
+      </div>
+      </br>
+      <div class="transactions">
+	<h3>Last donations</h3>
+	<table class="table">
+	  <thead><tr><th>Address</th><th>Time</th><th>Tx ID</th><th>Amount</th></tr></thead>
+          <tbody>
+            {% for i in info %}
+              <tr><td><a href="http://eduexplorer.port0.org/address/{{ i['address'] }}" target="_blank">{{ i['address'] }}</a></td><td>{{ i['time'] }}</td><td>{{ i['txid'] }}</td><td>{{ i['amount'] }}</td></tr>
+            {% endfor %}
+          </tbody>
+	</table>
+      </div>
+    </main><!-- /.container -->
+{% endblock %}

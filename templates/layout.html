@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <!-- Bootstrap core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" rel="stylesheet">
+  {% block title %}<title>{{chaininfo['name']}} - Faucet</title>{% endblock %}
+</head>
+
+<body>
+ <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow" style="background-color: orange">
+      <h3 class="my-0 mr-md-auto font-weight-normal"><a style="color:black;" href="http://bitcoinedu.io" target="_blank">BitcoinEDU.io</a></h5>
+      <h5 class="my-0 mx-3"><a style="color:black;" href="/" target="_blank">Edu Faucet</a></h5>
+      <h5 class="my-0 mx-3"><a style="color:black;" href="http://eduexplorer.port0.org" target="_blank">Chainview Explorer</a></h5>
+      <h5 class="my-0 mx-3"><a style="color:black;" href="https://chain.port0.org:5100" target="_blank">Simple Wallet</a></h5>
+      <h5 class="my-0 mx-3"><a style="color:black;" href="http://bitcoinedu.boards.net" target="_blank">Bitcoin Edu Board</a></h5>
+      <h5 class="my-0 mx-3"><a style="color:black;" href="http://bitcoinedu.boards.net" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;</a></h5>
+      <p id="title2">EduFaucet v{{topinfo['version']}}<br><a href="{{topinfo['github']}}" target="_blank">github</a></p>
+    </div>
+    {% block pagecontent %}
+    {% endblock %}
+  </div>
+</body>
+</html>

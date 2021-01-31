@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block pagecontent %}
+<script>
+   // Set the date we're counting down to
+   var countDownDate = {{nextTime}}
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+    // Time calculations for minutes and seconds
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="time"
+    document.getElementById("time").innerHTML =  "{{err}}" + minutes + "m " + seconds + "s ";
+
+    // If the count down is over, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "{{err}} NOW";
+    }
+}, 1000);
+</script>
+
+ <main role="main" class="container">
+
+      <div class="starter-template">
+        <h2>Bitcoin Edu Donation Failed</h2>
+        <table class="table">
+          <tr><td>
+              {{msg}}</br>
+              </br>
+              <p id="time" style="color:red">{{err}}</p></td></tr>
+          <tr><td>
+             <a href="/" class="btn btn-info" role="button">Return to first page</a>
+          </td></tr>
+        </table>
+      </div>
+      </br>
+      <div class="transactions">
+        <h3>Last donations</h3>
+        <table class="table">
+          <thead><tr><th>Address</th><th>Time</th><th>Tx ID</th><th>Amount</th></tr></thead>
+          <tbody>
+            {% for i in info %}
+              <tr><td><a href="http://eduexplorer.port0.org/address/{{ i['address'] }}" target="_blank">{{ i['address'] }}</a></td><td>{{ i['time'] }}</td><td>{{ i['txid'] }}</td><td>{{ i['amount'] }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </main><!-- /.container -->
+{% endblock %}

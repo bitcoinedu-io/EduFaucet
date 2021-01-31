@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block pagecontent %}
+ <main role="main" class="container">
+
+      <div class="starter-template">
+        <h2>Bitcoin Edu Donated</h2>
+        <table class="table">
+          <tr><td>
+              Four (4) BTE has been sent to address <a href="http://eduexplorer.port0.org/address/{{eduAddress}}">{{eduAddress}}</a>.</br>
+              </br>
+              You can see the transaction in the <a href="http://eduexplorer.port0.org/address/{{eduAddress}}">Blockexplorer</a>.</td></tr>
+          <tr><td>
+              <p>Txid: </p> <p style="color:red">{{err}}</p>
+          </td></tr>
+        </table>
+      </div>
+      </br>
+      <div class="transactions">
+        <h3>Last donations</h3>
+        <table class="table">
+          <thead><tr><th>Address</th><th>Time</th><th>Tx ID</th><th>Amount</th></tr></thead>
+          <tbody>
+            {% for i in info %}
+              <tr><td><a href="http://eduexplorer.port0.org/address/{{ i['address'] }}" target="_blank">{{ i['address'] }}</a></td><td>{{ i['time'] }}</td><td>{{ i['txid'] }}</td><td>{{ i['amount'] }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main><!-- /.container -->
+{% endblock %}
