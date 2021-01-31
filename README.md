@@ -21,7 +21,6 @@ Run:
 - Enable RPC and txindex in bitcoin.conf (server=1, rpcuser=xxx, rpcpassword=yyy, txindex=1)
 - Modify config in eduFaucet_config.py
 - Only once (first time): run eduFaucet_createupdatedb.py
-- Run: eduFaucet_fill.py
 - Run: eduFaucet_run_gunicorn.sh (modify script to select web server port number)
 
 The fill and gunicorn processes can easiest be run inside screen or tmux. Then, detatch and they will continue running.
